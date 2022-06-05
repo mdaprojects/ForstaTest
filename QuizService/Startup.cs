@@ -8,6 +8,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QuizService.Helpers;
 
 namespace QuizService;
 
@@ -23,6 +24,7 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
         services.AddMvc();
         services.AddSingleton(InitializeDb());
         services.AddControllers();
