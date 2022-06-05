@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuizService.Helpers;
 using QuizService.Repositories;
+using QuizService.Services;
 
 namespace QuizService;
 
@@ -26,6 +27,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<IQuizRepository, QuizRepository>();
+        services.AddScoped<IQuizzesService, QuizzesService>();
         services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
         services.AddMvc();
         services.AddSingleton(InitializeDb());
